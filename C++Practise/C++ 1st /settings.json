@@ -1,0 +1,15 @@
+{
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "files.autoSave": "afterDelay",
+    "git.inputValidation": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "editor.renderLineHighlight": "all",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.loggingLevel": "Information"
+}
