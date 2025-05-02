@@ -165,4 +165,51 @@ int main() {
 }
 */
 
+/*
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool uniqueOccurrences(vector<int>& arr) {
+    vector<int> elements;
+    vector<int> frequencies;
+
+    // Count frequencies manually
+    for (int i = 0; i < arr.size(); ++i) {
+        bool found = false;
+        for (int j = 0; j < elements.size(); ++j) {
+            if (arr[i] == elements[j]) {
+                frequencies[j]++;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            elements.push_back(arr[i]);
+            frequencies.push_back(1);
+        }
+    }
+
+    // Check for unique frequencies
+    for (int i = 0; i < frequencies.size(); ++i) {
+        for (int j = i + 1; j < frequencies.size(); ++j) {
+            if (frequencies[i] == frequencies[j]) {
+                return false; // duplicate frequency found
+            }
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    vector<int> arr1 = {1, 2, 2, 1, 1, 3};   // true
+    vector<int> arr2 = {1, 2, 2, 1, 3, 3};   // false
+
+    cout << boolalpha << uniqueOccurrences(arr1) << endl;
+    cout << boolalpha << uniqueOccurrences(arr2) << endl;
+
+    return 0;
+}
+*/
 

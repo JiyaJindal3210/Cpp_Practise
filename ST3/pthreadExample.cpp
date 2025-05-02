@@ -187,6 +187,7 @@ int main() {
 }
 */
 
+/*
 #include <iostream>
 #include <pthread.h>
 using namespace std;
@@ -232,3 +233,5 @@ int main() {
 // high chances of undefined behaviour , the situation is known as race condition in multithread program.
 
 // to prevent this , we need to use synchronization technique in our code 
+*/
+
