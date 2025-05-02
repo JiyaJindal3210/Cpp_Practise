@@ -48,7 +48,7 @@ using namespace std;
 
 int main(){
 
-    // TAsk 1 : given a 2d array of numbers , your task is to perform following operation.columns
+    // Task 1 : given a 2d array of numbers , your task is to perform following operation.columns
     // 1. find out the sum of all elements
 
     int nums[3][3] = {
