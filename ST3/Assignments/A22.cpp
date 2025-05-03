@@ -258,6 +258,7 @@ int main() {
 
 // Question 7 : 
 
+/*
 #include <iostream>
 #include <pthread.h>
 using namespace std;
@@ -304,5 +305,147 @@ int main() {
     pthread_join(t2,NULL);
 
     cout << "Total Sum: " << (sum1+sum2) << endl;
+
+}
+*/
+
+// Question 8 : 
+
+/*
+#include <iostream>
+#include <pthread.h>
+using namespace std;
+
+pthread_mutex_t lock1 = PTHREAD_MUTEX_INITIALIZER;
+
+int arr[] = {5,2,9,6,4};
+
+void* MaxElement(void* args){
+    pthread_mutex_lock(&lock1);
+    int max = arr[0];
+    for(int i=0;i<10;i++){
+        if(max<arr[i]){
+            max = arr[i];
+        }
+    }
+    cout << "Maximum element is: " << max << endl;
+    cout << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+
+int main() {
+    pthread_t t1;
+    
+    pthread_create(&t1,NULL,MaxElement,NULL); // takes 4 arguments - helps to create thread
+
+    pthread_join(t1,NULL);
+
+}
+*/
+
+// Question 9 : 
+
+/*
+#include <iostream>
+#include <pthread.h>
+using namespace std;
+
+pthread_mutex_t lock1 = PTHREAD_MUTEX_INITIALIZER;
+
+void* thread1(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Loggin info 1" << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+void* thread2(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Loggin info 2" << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+void* thread3(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Loggin info 3" << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+int main() {
+    pthread_t t1;
+    pthread_t t2;
+    pthread_t t3;
+
+    pthread_create(&t1,NULL,thread1,NULL); 
+    pthread_create(&t2,NULL,thread2,NULL); 
+    pthread_create(&t3,NULL,thread3,NULL);
+
+    pthread_join(t1,NULL);
+    pthread_join(t2,NULL);
+    pthread_join(t3,NULL);
+    
+    return 0;
+}
+*/
+
+// Question 10 : 
+
+#include <iostream>
+#include <pthread.h>
+using namespace std;
+
+pthread_mutex_t lock1 = PTHREAD_MUTEX_INITIALIZER;
+
+void* tableOf2(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Table of 2: " << endl;
+    for(int i=1;i<=10;i++){
+        cout << i*2 << " ";
+    }
+    cout << endl << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+void* tableOf5(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Table of 5: " << endl;
+    for(int i=1;i<=10;i++){
+        cout << i*5 << " ";
+    }
+    cout << endl << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+void* tableOf10(void* args){
+    pthread_mutex_lock(&lock1);
+    cout << "Table of 10: " << endl;
+    for(int i=1;i<=10;i++){
+        cout << i*10 << " ";
+    }
+    cout << endl << endl;
+    pthread_mutex_unlock(&lock1);
+    return nullptr;
+}
+
+
+int main(){
+
+    pthread_t t1;
+    pthread_t t2;
+    pthread_t t3;
+
+    pthread_create(&t1,NULL,tableOf2,NULL);
+    pthread_create(&t2,NULL,tableOf5,NULL);
+    pthread_create(&t3,NULL,tableOf10,NULL);
+
+    pthread_join(t1,NULL);
+    pthread_join(t2,NULL);
+    pthread_join(t3,NULL);
 
 }
