@@ -239,3 +239,41 @@ int main() {
     return 0;
 }
 */
+
+/*
+#include <iostream>
+using namespace std;
+
+vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
+{
+	int i = 0 , j = 0;
+	vector<int> ans;
+	while(i<n && j<m){
+		if(arr1[i]==arr2[j]){
+			ans.push_back(arr1[i]);
+			i++;
+			j++;
+		}
+		else if(arr1[i]<arr2[j]){
+			i++;
+		}
+		else{
+			j++;
+		}
+	}
+	return ans;
+}
+
+int main() {
+    int n = 6;
+    int m = 4;
+    vector<int> arr1 = {1,2,2,2,3,4};
+    vector<int> arr2 = {2,2,3,3};
+    vector<int> result = findArrayIntersection(arr1,n,arr2,m);
+    for (int index : result) {
+        cout << index << " ";
+    }
+    cout << endl;
+    return 0;
+}
+*/
