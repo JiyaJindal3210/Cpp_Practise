@@ -241,6 +241,9 @@ int main() {
 */
 
 /*
+
+// Two - Pointer Approach
+
 #include <iostream>
 using namespace std;
 
@@ -274,6 +277,104 @@ int main() {
         cout << index << " ";
     }
     cout << endl;
+    return 0;
+}
+*/
+
+/*
+#include <iostream>
+using namespace std;
+
+vector<vector<int>> pairSum(vector<int> &arr, int s){
+    vector< vector<int> > ans;
+    for(int i=0;i<arr.size();i++){
+       for(int j=i+1;j<arr.size();j++){
+          if(arr[i]+arr[j]==s){
+            vector<int> temp;
+            temp.push_back(min(arr[i],arr[j]));
+            temp.push_back(max(arr[i],arr[j]));
+            ans.push_back(temp);
+          }
+       }
+    }
+    sort(ans.begin(),ans.end());
+    return ans;
+ }
+
+int main() {
+    int n, s;
+    
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    
+    
+    vector<int> arr(n);
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    
+    cout << "Enter the target sum: ";
+    cin >> s;
+    
+    
+    vector<vector<int>> result = pairSum(arr, s);
+    
+   
+    if (result.empty()) {
+        cout << "No pairs found with sum " << s << endl;
+    } else {
+        cout << "Pairs with sum " << s << ":" << endl;
+        for (const auto &pair : result) {
+            cout << "[" << pair[0] << ", " << pair[1] << "]" << endl;
+        }
+    }
+    
+    return 0;
+}
+*/
+
+/*
+#include <bits/stdc++.h>
+using namespace std;
+
+int pairSum(vector<int> &arr, int n, int target) {
+    sort(arr.begin(), arr.end());
+    int count = 0;
+    int left = 0, right = n - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == target) {
+            count++;
+            left++;
+            right--;
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    return count == 0 ? -1 : count;
+}
+
+int main() {
+    int n, target;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    vector<int> arr(n);
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    cout << "Enter the target sum: ";
+    cin >> target;
+    int result = pairSum(arr, n, target);
+    if (result == -1) {
+        cout << "No pairs found with sum " << target << endl;
+    } else {
+        cout << "Number of pairs with sum " << target << ": " << result << endl;
+    }
     return 0;
 }
 */
