@@ -1,36 +1,31 @@
+/*
 #include <bits/stdc++.h>
 using namespace std;
 
 vector<vector<int>> findTripletsWithZeroSum(vector<int> &arr, int n) {
     vector<vector<int>> ans;
     
-    // Sort the array to use two-pointer technique and ensure sorted triplets
     sort(arr.begin(), arr.end());
     
-    // Fix the first element and find two others using two pointers
     for (int i = 0; i < n - 2; i++) {
-        // Skip duplicates for the first element to avoid duplicate triplets
         if (i > 0 && arr[i] == arr[i - 1]) continue;
         
         int left = i + 1, right = n - 1;
         
-        // Use two pointers to find a pair summing to -arr[i]
         while (left < right) {
             int sum = arr[i] + arr[left] + arr[right];
             if (sum == 0) {
-                // Found a triplet: store it
                 ans.push_back({arr[i], arr[left], arr[right]});
                 
-                // Skip duplicates for left and right pointers
                 while (left < right && arr[left] == arr[left + 1]) left++;
                 while (left < right && arr[right] == arr[right - 1]) right--;
                 
                 left++;
                 right--;
             } else if (sum < 0) {
-                left++; // Need a larger sum
+                left++; 
             } else {
-                right--; // Need a smaller sum
+                right--; 
             }
         }
     }
@@ -65,5 +60,138 @@ int main() {
         }
     }
     
+    return 0;
+}
+*/
+
+/*
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[] ,int n){
+
+    for(int i=0;i<n;i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void SortOne(int arr[] , int n){
+
+    int left = 0 , right = n-1;
+
+    while(left < right){
+
+        while(arr[left]==0 && left < right){
+            left++;
+        }
+        while(arr[right]==1 && left < right){
+            right--;
+        }
+        
+        if(left < right){
+            swap(arr[left],arr[right]);
+            left++;
+            right--;
+        }
+    }
+
+    
+}
+
+int main() {
+    
+    int arr[8] = {1,1,0,0,0,0,1,0};
+    SortOne(arr,8);
+    printArray(arr,8);
+
+    return 0;
+}
+*/
+
+/*
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[] ,int n){
+
+    for(int i=0;i<n;i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void sort012(int *arr, int n)
+{
+   int low = 0, mid = 0, high = n - 1;
+    
+
+   while (mid <= high) {
+
+      if (arr[mid] == 0) {
+         swap(arr[low], arr[mid]);
+         low++;
+         mid++;
+      } 
+      
+      else if (arr[mid] == 1) {
+         mid++;
+      }
+
+      else { 
+         swap(arr[mid], arr[high]);
+         high--;
+      }
+
+   }
+
+   
+   
+}
+
+int main() {
+    
+    int arr[9] = {1,2,1,0,2,0,1,0,2};
+    sort012(arr,9);
+    printArray(arr,9);
+
+    return 0;
+}
+*/
+
+#include <iostream>
+using namespace std;
+
+char highestOccurringChar(char input[]) {
+    int freq[26] = {0};
+
+    // Count frequency of each character
+    for (int i = 0; input[i] != '\0'; i++) {
+        freq[input[i] - 'a']++;
+    }
+
+    int maxFreq = -1;
+    char maxChar;
+
+    // Find highest occurring character (first with max freq)
+    for (int i = 0; input[i] != '\0'; i++) {
+        int index = input[i] - 'a';
+        if (freq[index] > maxFreq) {
+            maxFreq = freq[index];
+            maxChar = input[i];
+        }
+    }
+
+    return maxChar;
+}
+
+int main() {
+    char input[1000001]; // Input size up to 10^6
+    cout << "Enter a lowercase string: ";
+    cin >> input;
+
+    char result = highestOccurringChar(input);
+    cout << "Highest occurring character: " << result << endl;
+
     return 0;
 }

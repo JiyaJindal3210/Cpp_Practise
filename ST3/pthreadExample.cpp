@@ -17,7 +17,8 @@ void* thread2(void* args){
     cout << "Hello from Thread 2" << endl;
     return nullptr;
 }
-// while using multithreasing concept and we need to define a function then 
+
+// while using multithreading concept and we need to define a function then 
 // it should be a void pointer - can point to any data type but dereferenced only after typecasting
 
 
@@ -235,3 +236,9 @@ int main() {
 // to prevent this , we need to use synchronization technique in our code 
 */
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+}
