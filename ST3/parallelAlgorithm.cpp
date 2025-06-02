@@ -115,6 +115,75 @@ int main() {
 
 /*
 #include <iostream>
+#include <vector>
+#include <thread>
+using namespace std;
+
+void multiplyArray(const vector<vector<int>> &A, const vector<vector<int>> &B, vector<vector<int>> &result, int row, int k, int c)
+{
+
+    for (int j = 0; j < c; j++)
+    {
+        result[row][j] = 0;
+        for (int m = 0; m < k; m++)
+        {
+            result[row][j] += A[row][m] * B[m][j];
+        }
+    }
+}
+
+int main()
+{
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+        int r1, k, c2;
+        cin >> r1 >> k >> c2;
+
+        vector<vector<int>> A(r1, vector<int>(k));
+        vector<vector<int>> B(k, vector<int>(c2));
+        vector<vector<int>> result(r1, vector<int>(c2, 0));
+
+        for (int i = 0; i < r1; i++)
+        {
+            for (int j = 0; j < k; j++)
+            {
+                cin >> A[i][j];
+            }
+        }
+
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < c2; j++)
+            {
+                cin >> B[i][j];
+            }
+        }
+
+        vector<thread> threads;
+        for (int i = 0; i < r1; i++)
+        {
+            threads.push_back(thread(multiplyArray, cref(A), cref(B), ref(result), i, k, c2));
+        }
+
+        for (auto &t : threads)
+            t.join();
+
+        cout << "Result:\n";
+        for (const auto &row : result)
+        {
+            for (int val : row)
+                cout << val << " ";
+            cout << endl;
+        }
+    }
+}
+*/
+
+/*
+#include <iostream>
 #include <thread>
 #include <vector>
 using namespace std;
@@ -162,4 +231,3 @@ int main() {
     }
 }
 */
-
